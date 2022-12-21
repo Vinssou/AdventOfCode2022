@@ -1,4 +1,3 @@
-
 struct Node
 {
     int number;
@@ -55,8 +54,7 @@ void sanityCheck(vector<Node>& numbers)
 }
 
 int puzzle20()
-{
-    
+{   
     ifstream myFile("input20.txt");
     string line;
 
@@ -104,6 +102,10 @@ int puzzle20()
             for (int i = 0; i < currentNumber; i++)
             {
                 afterNode = afterNode->next;
+                if (currentNode == afterNode)
+                {
+                    afterNode = afterNode->next;
+                }
             }
             moveNode(afterNode, currentNode);
         }
@@ -113,17 +115,21 @@ int puzzle20()
             for (int i = 0; i >= currentNumber; i--)
             {
                 afterNode = afterNode->previous;
+                if (currentNode == afterNode)
+                {
+                    afterNode = afterNode->previous;
+                }
             }
             moveNode(afterNode, currentNode);
         }
 
-       /* Node* node = &numbers[0];
+        /*Node* node = &numbers[0];
         for (int i = 0; i < numberCount; i++)
         {
             cout << node->number << ",  ";
             node = node->next;
-        }
-        cout << endl;*/
+        }*/
+        cout << endl;
     }
     
     sanityCheck(numbers);
